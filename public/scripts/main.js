@@ -92,7 +92,7 @@ const handleFormSubmit = (e) => {
   userMsgDiv.querySelector(".message-text").textContent = userMessage;
   chatsContainer.appendChild(userMsgDiv);
   promptInput.value = "";
-  fileUploadWrapper.querySelector(".file-preview").src = "";
+    fileUploadWrapper.classList.remove("active", "img-attached", "file-attached");                                                            
   userData.message = userMessage;
   setTimeout(() => {
     const botMsgHTML =
@@ -131,7 +131,7 @@ fileInput.addEventListener("change", (e) => {
 
 document.querySelector("#cancel-file-btn").addEventListener("click", () => {
   userData.file = {};
-  fileUploadWrapper.classList.remove("active", "img-attached", "file-attached");
+  fileUploadWrapper.classList.remove("active", "img-attached", "file-attached");                                                                                
 });
 
 // document.querySelector("#stop-file-btn").addEventListener("click", () => {
