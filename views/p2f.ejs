@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="/css/interview.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Material+Symbols+Rounded:opsz, wght, FILL, GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+
+    <script src="/scripts/interview.js" defer></script>
+    <title>Text to Flow</title>
+  </head>
+  <body>
+    <div class="chat-container">
+      <div class="chat incoming">
+        <div class="chat-content">
+          <div class="chat-details">
+            <img src="/images/chatbot.png" alt="chatbot images" />
+            <p>
+              Explain me Your Project and I will help you to create a flowchart
+              and more.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="typing-container">
+      <div class="typing-content">
+        <div class="typing-textarea">
+          <textarea id="chat-input" placeholder="Enter a prompt here" required>
+          </textarea>
+          <span id="send-btn" class="material-symbols-rounded">send</span>
+        </div>
+        <div class="typing-controls">
+          <span id="mic-btn" class="material-symbols-rounded">mic</span>
+          <span id="delete-btn" class="material-symbols-rounded">delete</span>
+        </div>
+      </div>
+    </div>
+  </body>
+  <style>
+    /* Change cursor to pointer when hovering over span elements */
+    span {
+      cursor: pointer;
+    }
+
+    /* Additional hover effects for visual feedback */
+    span:hover {
+      color: #007bff; /* Optional: Change color on hover */
+      transform: scale(1.1); /* Optional: Slightly enlarge the icon on hover */
+      transition: all 0.2s ease; /* Smooth transition for the hover effect */
+    }
+  </style>
+  <script>
+    // Check if the browser supports the Web Speech API
+    if ("webkitSpeechRecognition" in window) {
+      const recognition = new webkitSpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      recognition.lang = "en-US";
+
+      const micButton = document.getElementById("mic-btn");
+      const chatInput = document.getElementById("chat-input");
+
+      micButton.addEventListener("click", () => {
+        recognition.start();
+      });
+
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        chatInput.value += transcript;
+      };
+
+      recognition.onerror = (event) => {
+        console.error("Speech recognition error:", event.error);
+      };
+
+      recognition.onend = () => {
+        console.log("Speech recognition service disconnected");
+      };
+    } else {
+      console.error("Web Speech API not supported in this browser.");
+    }
+  </script>
+</html>

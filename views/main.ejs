@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main Bot</title>
+    <script>
+      const apiKey = <%- JSON.stringify(apiKey) %>;
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:wght@400&display=swap"
+    />
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="app-header">
+        <h2 class="heading">Hello There,</h1>
+        <h3 class="sub-heading">How can I help you today?</h2>
+      </header>
+
+      <div class="chats-container" style="margin-top: 10px"></div>
+      <!-- <ul class="suggestions">
+        <li class="suggestions-item">
+          <p class="text">
+            Design a home office setup for remote work under $500.
+          </p>
+          <span class="material-symbols-rounded">draw</span>
+        </li>
+        <li class="suggestions-item">
+          <p class="text">
+            How can I level up my web development expertise in 2025?
+          </p>
+
+          <span class="material-symbols-rounded">lightbulb</span>
+        </li>
+        <li class="suggestions-item">
+          <p class="text">
+            Suggest some useful tools for debugging JavaScript code.
+          </p>
+          <span class="material-symbols-rounded">explore</span>
+        </li>
+        <li class="suggestions-item">
+          <p class="text">
+            Create a React JS component for the simple todo list app.
+          </p>
+          <span class="material-symbols-rounded">code_blocks</span>
+        </li>
+      </ul> -->
+
+      <div class="prompt-container">
+        <div class="prompt-wrapper">
+          <form action="#" class="prompt-form">
+            <input
+              type="text"
+              placeholder="Ask Clarity"
+              class="prompt-input"
+              required
+            />
+            <div class="prompt-actions">
+              <div class="file-upload-wrapper">
+                <img src="#" class="file-preview" />
+                <input
+                  type="file"
+                  accept="image/*,.pdf,.txt,.csv"
+                  id="file-input"
+                  hidden
+                />
+                <button
+                  type="button"
+                  class="file-icon material-symbols-rounded"
+                >
+                  description
+                </button>
+                <button
+                  id="add-file-btn"
+                  type="button"
+                  class="material-symbols-rounded"
+                >
+                  attach_file
+                </button>
+                <button
+                  id="cancel-file-btn"
+                  type="button"
+                  class="material-symbols-rounded"
+                >
+                  close
+                </button>
+              </div>
+
+              <button id="send-prompt-btn" class="material-symbols-rounded">
+                arrow_upward
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="/scripts/main.js"></script>
+  </body>
+</html>
